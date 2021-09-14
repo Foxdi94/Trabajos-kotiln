@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDetail">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/btn_expand_image"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/carscificcion"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="320dp"
+            android:layout_height="190dp"
+            android:layout_marginTop="20dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_expand_image" />
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/imageButton4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="104dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
