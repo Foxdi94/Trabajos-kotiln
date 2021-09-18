@@ -41,6 +41,7 @@ class FragmentUserLecture : Fragment() {
         val recivedLecture = arguments?.getInt("literaryWorkRead")
         println( "esta es la lectura solicitada" + recivedLecture)
 
+        var counterWorks = 0
         var lectureImage = v.findViewById<ImageView>(R.id.img_lecture_view)
         var lectureTitle = v.findViewById<TextView>(R.id.txt_lecture_title)
         var lectureContent = v.findViewById<TextView>(R.id.txt_lecture_content)
@@ -66,6 +67,53 @@ class FragmentUserLecture : Fragment() {
                 lectureTitle.setText(array_works[i].Name)
                 lectureContent.setText(array_works[i].Content)
                 lectureLikes.setText("00000")
+            }
+        }
+
+        arrowLeft.setOnClickListener{
+            counterWorks--
+            println(counterWorks)
+            if (counterWorks <= 0){
+                lectureImage.setImageResource(R.drawable.article1)
+                lectureTitle.setText(array_works[0].Name)
+                lectureContent.setText(array_works[0].Content)
+                counterWorks = 4
+            }else if (counterWorks ==1){
+                lectureImage.setImageResource(R.drawable.article2)
+                lectureTitle.setText(array_works[1].Name)
+                lectureContent.setText(array_works[1].Content)
+            }else if (counterWorks == 2){
+                lectureImage.setImageResource(R.drawable.article3)
+                lectureTitle.setText(array_works[2].Name)
+                lectureContent.setText(array_works[2].Content)
+            }else if (counterWorks == 3){
+                lectureImage.setImageResource(R.drawable.article4)
+                lectureTitle.setText(array_works[3].Name)
+                lectureContent.setText(array_works[3].Content)
+            }
+        }
+
+        arrowRight.setOnClickListener{
+            counterWorks++
+            println(counterWorks)
+            if (counterWorks == 0 ){
+                lectureImage.setImageResource(R.drawable.article1)
+                lectureTitle.setText(array_works[0].Name)
+                lectureContent.setText(array_works[0].Content)
+
+            }else if (counterWorks ==1){
+                lectureImage.setImageResource(R.drawable.article2)
+                lectureTitle.setText(array_works[1].Name)
+                lectureContent.setText(array_works[1].Content)
+            }else if (counterWorks == 2){
+                lectureImage.setImageResource(R.drawable.article3)
+                lectureTitle.setText(array_works[2].Name)
+                lectureContent.setText(array_works[2].Content)
+            }else if (counterWorks == 3) {
+                lectureImage.setImageResource(R.drawable.article4)
+                lectureTitle.setText(array_works[3].Name)
+                lectureContent.setText(array_works[3].Content)
+                counterWorks = -1
             }
         }
 

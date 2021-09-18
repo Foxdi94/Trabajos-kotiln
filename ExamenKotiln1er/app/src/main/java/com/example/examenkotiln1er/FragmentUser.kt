@@ -1,6 +1,9 @@
 package com.example.examenkotiln1er
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,11 +26,25 @@ class FragmentUser : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var like1 = false
+    var like2 = false
+    var like3 = false
+    var like4 = false
+
+    val sharedPref = activity?.getSharedPreferences("sharing", Context.MODE_PRIVATE)
+    val edit = sharedPref?.edit()
+    /*edit?.putBoolean("likedWork1", true)
+    edit?.putBoolean("likedWork2", true)
+    edit?.commit()*/
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
         }
     }
 
@@ -50,7 +67,11 @@ class FragmentUser : Fragment() {
         var dataUserType = v.findViewById<TextView>(R.id.txt_user_type)
         var dataLiked = v.findViewById<TextView>(R.id.txt_liked_writes)
         var lectureTitle = v.findViewById<TextView>(R.id.txt_description)
+
+        //val  prefs = PreferenceManager.getDefaultSharedPreferences(this)
+
         println(recivedUser)
+
 
         var LiteralWork1 = LiteraryWorks(1,"Zistopia","Erra una noche muy fria en donde de repente el me tomo de la mano", 0,R.drawable.article1)
         var LiteralWork2 = LiteraryWorks(2,"Snape y yo", "El mastro Snape siempre me miraba con esa mirada penetranta que intimidaba a cualquie mogle", 0,R.drawable.article2)
@@ -120,6 +141,8 @@ class FragmentUser : Fragment() {
                 realArticle = 3
                 counterWorks = -1
             }
+            //Funcion para los sharePreferences de los likes
+            allLikedWorks(realArticle)
         }
 
         btnLeft.setOnClickListener{
@@ -162,7 +185,38 @@ class FragmentUser : Fragment() {
         return v
     }
 
+    private fun allLikedWorks(selectedWork : Int){
+        var selected = selectedWork
+        val sharedPref = activity?.getSharedPreferences("sharing", Context.MODE_PRIVATE)
+
+        when (selected){
+
+            0 -> if (!like1)
+                    edit?.putBoolean("likedWork1", true)
+                else
+                    edit?.putBoolean("likedWork1", false)
+
+            1 -> if (!like2)
+                    edit?.putBoolean("likedWork2", true)
+                else
+                    edit?.putBoolean("likedWork2", false)
+
+            2 -> if (!like3)
+                    edit?.putBoolean("likedWork3", true)
+                else
+                    edit?.putBoolean("likedWork3", false)
+
+            3 -> if (!like4)
+                    edit?.putBoolean("likedWork4", true)
+                else
+                    edit?.putBoolean("likedWork4", false)
+        }
+
+    }
+
     private fun saveLikes() {
+
+
 
     }
 
