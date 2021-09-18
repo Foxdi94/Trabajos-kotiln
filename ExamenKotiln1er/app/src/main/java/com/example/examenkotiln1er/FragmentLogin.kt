@@ -1,10 +1,14 @@
 package com.example.examenkotiln1er
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import android.widget.Toast
+import org.w3c.dom.Text as Text
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +37,72 @@ class FragmentLogin : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        val v = inflater.inflate(R.layout.fragment_login, container, false)
+
+
+        val img_user = v.findViewById<ImageView>(R.id.image_User) as ImageView
+        val access_btn = v.findViewById<View>(R.id.button_sing_in) as Button
+
+        var input_email = v.findViewById(R.id.txt_email_input) as EditText
+        var input_pass = v.findViewById(R.id.txt_password_input) as EditText
+
+        var Usuario1 = Usuario(1,"a", "123","normaluser",0)
+        var Usuario2 = Usuario(2,"susi", "321", "writer",0)
+        var Usuario3 = Usuario(3,"bb","555", "normaluser",0)
+
+        val array_users:ArrayList<Usuario> = arrayListOf<Usuario>()
+        array_users.add(Usuario1)
+        array_users.add(Usuario2)
+        array_users.add(Usuario3)
+
+        input_pass.isEnabled = false
+
+        input_email.setOnClickListener(){
+            input_pass.isEnabled = true
+        }
+
+        access_btn.setOnClickListener{
+
+            for (i in array_users.indices){
+                var user = i
+                val bundle = Bundle()
+
+                if (input_email?.text.toString() == array_users[i].Username){
+                    if(input_pass?.text.toString() == array_users[i].Password){
+                        println("la constrasena y correo son correctos")
+
+                        if (array_users[i].UserType == "writer"){
+
+                            val fragment = FragmentWriter()
+                            val fragmentManager = requireActivity().supportFragmentManager
+                            val fragmentTransaction = fragmentManager.beginTransaction()
+                            fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+                            fragmentTransaction.addToBackStack(null)
+                            bundle.putInt("userSesion", user)
+                            fragment.arguments = bundle
+
+                            fragmentTransaction.commit()
+
+                        }else{
+
+                            val fragment = FragmentUser()
+                            val fragmentManager = requireActivity().supportFragmentManager
+                            val fragmentTransaction = fragmentManager.beginTransaction()
+                            fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+                            fragmentTransaction.addToBackStack(null)
+                            bundle.putInt("userSesion", user)
+                            fragment.arguments = bundle
+
+                            fragmentTransaction.commit()
+                        }
+                    }
+                }
+            }
+        }
+
+        return v
+
     }
 
     companion object {
