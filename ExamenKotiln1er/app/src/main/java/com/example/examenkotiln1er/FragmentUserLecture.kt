@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +36,40 @@ class FragmentUserLecture : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_lecture, container, false)
+        val v = inflater.inflate(R.layout.fragment_user_lecture, container, false)
+
+        val recivedLecture = arguments?.getInt("userSesion")
+        println(recivedLecture)
+
+        var lectureImage = v.findViewById<ImageView>(R.id.img_lecture_view)
+        var lectureTitle = v.findViewById<TextView>(R.id.txt_lecture_title)
+        var lectureContent = v.findViewById<TextView>(R.id.txt_lecture_content)
+        var lectureLikes = v.findViewById<TextView>(R.id.txt_lecture_content)
+
+        val arrowLeft = v.findViewById<ImageView>(R.id.btn_arrow_left)
+        val arrowRight = v.findViewById<ImageView>(R.id.btn_arrow_right)
+
+        var LiteralWork1 = LiteraryWorks(1,"Zistopia","Erra una noche muy fria en donde de repente el me tomo de la mano", 0,R.drawable.article1)
+        var LiteralWork2 = LiteraryWorks(2,"Snape y yo", "El mastro Snape siempre me miraba con esa mirada penetranta que intimidaba a cualquie mogle", 0,R.drawable.article2)
+        var LiteralWork3 = LiteraryWorks(3, "Jordi el proxwneta", "Jordi se encontraba placidamente grabando su nuevo video", 0, R.drawable.article3)
+        var LiteralWork4 = LiteraryWorks(4, "Elsa y Jack frost", "Nuestro universos eran tan distintos pero nuestro amor era mas fuerte que eso", 0, R.drawable.article4)
+        var array_works:ArrayList<LiteraryWorks> = arrayListOf<LiteraryWorks>()
+        array_works.add(LiteralWork1)
+        array_works.add(LiteralWork2)
+        array_works.add(LiteralWork3)
+        array_works.add(LiteralWork4)
+
+
+        for (i in array_works.indices){
+            if (recivedLecture == i){
+                lectureImage.setImageResource(array_works[i].ImgSource)
+                lectureTitle.setText(array_works[i].Name)
+                lectureContent.setText(array_works[i].Content)
+                lectureLikes.setText("0")
+            }
+        }
+
+        return v
     }
 
     companion object {

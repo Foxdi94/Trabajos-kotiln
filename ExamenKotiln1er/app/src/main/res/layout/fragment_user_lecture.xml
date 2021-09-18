@@ -16,12 +16,12 @@
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/emptyheart"
+            android:src="@drawable/heart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txt_lecture_likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -37,7 +37,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="88dp"
             android:src="@drawable/arrowleft"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintEnd_toStartOf="@+id/img_lecture_view"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_like_lecture" />
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_like_lecture" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/img_lecture_view"
             android:layout_width="220dp"
             android:layout_height="150dp"
             android:layout_marginTop="30dp"
@@ -66,17 +66,17 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_like_lecture" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txt_lecture_title"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/img_lecture_view" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txt_lecture_content"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
@@ -84,7 +84,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_lecture_title" />
 
         <Button
             android:id="@+id/btn_sing"
@@ -95,7 +95,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_lecture_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

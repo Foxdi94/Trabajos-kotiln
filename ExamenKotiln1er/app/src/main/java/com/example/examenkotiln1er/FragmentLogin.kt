@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.Toast
+import com.google.gson.Gson
 import org.w3c.dom.Text as Text
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,6 +41,15 @@ class FragmentLogin : Fragment() {
 
         val v = inflater.inflate(R.layout.fragment_login, container, false)
 
+        /*var gson = Gson()
+        var UsuarioPrueba = Usuario(4,"pruebito","666","normaluser", 0,R.drawable.imguser2)
+        var json = gson.toJson(UsuarioPrueba)
+        println( "este debe ser el json" + json)
+
+        var jsonconvert = "{\"Id\":4,\"Liked\":0,\"Password\":\"666\",\"ProfileImg\":2131165298,\"UserType\":\"normaluser\",\"Username\":\"pruebito\"}"
+        var UsuarioPruebajson:Usuario = gson.fromJson(json, Usuario::class.java)
+        println("este es de json a objeto" + UsuarioPruebajson)*/
+
 
         val img_user = v.findViewById<ImageView>(R.id.image_User) as ImageView
         val access_btn = v.findViewById<View>(R.id.button_sing_in) as Button
@@ -47,9 +57,9 @@ class FragmentLogin : Fragment() {
         var input_email = v.findViewById(R.id.txt_email_input) as EditText
         var input_pass = v.findViewById(R.id.txt_password_input) as EditText
 
-        var Usuario1 = Usuario(1,"a", "123","normaluser",0)
-        var Usuario2 = Usuario(2,"susi", "321", "writer",0)
-        var Usuario3 = Usuario(3,"bb","555", "normaluser",0)
+        var Usuario1 = Usuario(1,"a", "123","normaluser",0, R.drawable.imguser1)
+        var Usuario2 = Usuario(2,"susi", "321", "writer",0,R.drawable.imguser2)
+        var Usuario3 = Usuario(3,"bb","555", "normaluser",0, R.drawable.imguser3)
 
         val array_users:ArrayList<Usuario> = arrayListOf<Usuario>()
         array_users.add(Usuario1)
