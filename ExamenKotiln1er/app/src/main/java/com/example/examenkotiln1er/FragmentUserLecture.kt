@@ -38,13 +38,13 @@ class FragmentUserLecture : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_user_lecture, container, false)
 
-        val recivedLecture = arguments?.getInt("userSesion")
-        println(recivedLecture)
+        val recivedLecture = arguments?.getInt("literaryWorkRead")
+        println( "esta es la lectura solicitada" + recivedLecture)
 
         var lectureImage = v.findViewById<ImageView>(R.id.img_lecture_view)
         var lectureTitle = v.findViewById<TextView>(R.id.txt_lecture_title)
         var lectureContent = v.findViewById<TextView>(R.id.txt_lecture_content)
-        var lectureLikes = v.findViewById<TextView>(R.id.txt_lecture_content)
+        var lectureLikes = v.findViewById<TextView>(R.id.txt_lecture_likes)
 
         val arrowLeft = v.findViewById<ImageView>(R.id.btn_arrow_left)
         val arrowRight = v.findViewById<ImageView>(R.id.btn_arrow_right)
@@ -65,7 +65,7 @@ class FragmentUserLecture : Fragment() {
                 lectureImage.setImageResource(array_works[i].ImgSource)
                 lectureTitle.setText(array_works[i].Name)
                 lectureContent.setText(array_works[i].Content)
-                lectureLikes.setText("0")
+                lectureLikes.setText("00000")
             }
         }
 

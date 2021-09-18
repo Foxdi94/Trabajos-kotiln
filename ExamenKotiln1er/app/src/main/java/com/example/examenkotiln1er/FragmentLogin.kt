@@ -60,11 +60,17 @@ class FragmentLogin : Fragment() {
         var Usuario1 = Usuario(1,"a", "123","normaluser",0, R.drawable.imguser1)
         var Usuario2 = Usuario(2,"susi", "321", "writer",0,R.drawable.imguser2)
         var Usuario3 = Usuario(3,"bb","555", "normaluser",0, R.drawable.imguser3)
+        var Usuario4 = Usuario(4,"arturin@gmail.com","222","writer",0,R.drawable.imgwriter1)
+        var Usuario5 = Usuario(5,"paquito12@gmail.com","616", "writer", 0, R.drawable.imgwriter2)
+        var Usuario6 = Usuario(6, "sochiminclamendez@gmail.com", "troconasderrapentes","writer", 0, R.drawable.imgwriter3)
 
         val array_users:ArrayList<Usuario> = arrayListOf<Usuario>()
         array_users.add(Usuario1)
         array_users.add(Usuario2)
         array_users.add(Usuario3)
+        array_users.add(Usuario4)
+        array_users.add(Usuario5)
+        array_users.add(Usuario6)
 
         input_pass.isEnabled = false
 

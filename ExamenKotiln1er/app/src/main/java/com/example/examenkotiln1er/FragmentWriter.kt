@@ -50,11 +50,12 @@ class FragmentWriter : Fragment() {
         var userNickname = v.findViewById<TextView>(R.id.txt_nickname)
         var userType = v.findViewById<TextView>(R.id.txt_user_type)
         var numberOfWorks = v.findViewById<TextView>(R.id.txt_writer_articles)
+        var titleOfWork = v.findViewById<TextView>(R.id.literary_work_title)
 
-        var LiteralWork1 = LiteraryWorks(1,"Zistopia","Erra una noche muy fria en donde de repente el me tomo de la mano", 0)
-        var LiteralWork2 = LiteraryWorks(2,"Snape y yo", "El mastro Snape siempre me miraba con esa mirada penetranta que intimidaba a cualquie mogle", 0)
-        var LiteralWork3 = LiteraryWorks(3, "Jordi el proxwneta", "Jordi se encontraba placidamente grabando su nuevo video", 0)
-        var LiteralWork4 = LiteraryWorks(4, "Elsa y Jack frost", "Nuestro universos eran tan distintos pero nuestro amor era mas fuerte que eso", 0)
+        var LiteralWork1 = LiteraryWorks(1,"Zistopia","Erra una noche muy fria en donde de repente el me tomo de la mano", 0,R.drawable.article1)
+        var LiteralWork2 = LiteraryWorks(2,"Snape y yo", "El mastro Snape siempre me miraba con esa mirada penetranta que intimidaba a cualquie mogle", 0,R.drawable.article2)
+        var LiteralWork3 = LiteraryWorks(3, "Jordi el proxwneta", "Jordi se encontraba placidamente grabando su nuevo video", 0, R.drawable.article3)
+        var LiteralWork4 = LiteraryWorks(4, "Elsa y Jack frost", "Nuestro universos eran tan distintos pero nuestro amor era mas fuerte que eso", 0, R.drawable.article4)
         var array_works:ArrayList<LiteraryWorks> = arrayListOf<LiteraryWorks>()
         array_works.add(LiteralWork1)
         array_works.add(LiteralWork2)
@@ -64,11 +65,19 @@ class FragmentWriter : Fragment() {
         var Usuario1 = Usuario(1,"a", "123","normaluser",0, R.drawable.imguser1)
         var Usuario2 = Usuario(2,"susi", "321", "writer",0,R.drawable.imguser2)
         var Usuario3 = Usuario(3,"bb","555", "normaluser",0, R.drawable.imguser3)
+        var Usuario4 = Usuario(4,"arturin@gmail.com","222","writer",0,R.drawable.imgwriter1)
+        var Usuario5 = Usuario(5,"paquito12@gmail.com","616", "writer", 0, R.drawable.imgwriter2)
+        var Usuario6 = Usuario(6, "sochiminclamendez@gmail.com", "troconasderrapentes","writer", 0, R.drawable.imgwriter3)
 
         val array_users:ArrayList<Usuario> = arrayListOf<Usuario>()
         array_users.add(Usuario1)
         array_users.add(Usuario2)
         array_users.add(Usuario3)
+        array_users.add(Usuario4)
+        array_users.add(Usuario5)
+        array_users.add(Usuario6)
+
+        var counterWorks = 0
 
         for (i in array_users.indices){
             if (i == recivedUser){
@@ -80,11 +89,45 @@ class FragmentWriter : Fragment() {
         }
 
         arrowRight.setOnClickListener{
+            counterWorks++
+            println(counterWorks)
+            if (counterWorks == 0 ){
+                imgWriterWork.setImageResource(R.drawable.article1)
+                titleOfWork.setText(array_works[0].Name)
 
+            }else if (counterWorks ==1){
+                imgWriterWork.setImageResource(R.drawable.article2)
+                titleOfWork.setText(array_works[1].Name)
+
+            }else if (counterWorks == 2){
+                imgWriterWork.setImageResource(R.drawable.article3)
+                titleOfWork.setText(array_works[2].Name)
+
+            }else if (counterWorks == 3){
+                imgWriterWork.setImageResource(R.drawable.article4)
+                titleOfWork.setText(array_works[3].Name)
+
+                counterWorks = -1
+            }
         }
 
         arrowLeft.setOnClickListener{
-
+            counterWorks--
+            println(counterWorks)
+            if (counterWorks <= 0){
+                imgWriterWork.setImageResource(R.drawable.article1)
+                titleOfWork.setText(array_works[0].Name)
+                counterWorks = 4
+            }else if (counterWorks ==1){
+                imgWriterWork.setImageResource(R.drawable.article2)
+                titleOfWork.setText(array_works[1].Name)
+            }else if (counterWorks == 2){
+                imgWriterWork.setImageResource(R.drawable.article3)
+                titleOfWork.setText(array_works[2].Name)
+            }else if (counterWorks == 3){
+                imgWriterWork.setImageResource(R.drawable.article4)
+                titleOfWork.setText(array_works[3].Name)
+            }
         }
 
         return v

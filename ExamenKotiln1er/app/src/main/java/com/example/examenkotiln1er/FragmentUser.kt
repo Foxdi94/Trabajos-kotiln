@@ -37,6 +37,7 @@ class FragmentUser : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var counterWorks = 0
+        var realArticle = 0
         val v = inflater.inflate(R.layout.fragment_user, container, false)
         val recivedUser = arguments?.getInt("userSesion")
         println(recivedUser)
@@ -48,6 +49,7 @@ class FragmentUser : Fragment() {
         var dataNickname = v.findViewById<TextView>(R.id.txt_nickname)
         var dataUserType = v.findViewById<TextView>(R.id.txt_user_type)
         var dataLiked = v.findViewById<TextView>(R.id.txt_liked_writes)
+        var lectureTitle = v.findViewById<TextView>(R.id.txt_description)
         println(recivedUser)
 
         var LiteralWork1 = LiteraryWorks(1,"Zistopia","Erra una noche muy fria en donde de repente el me tomo de la mano", 0,R.drawable.article1)
@@ -63,10 +65,16 @@ class FragmentUser : Fragment() {
         var Usuario1 = Usuario(1,"a", "123","normaluser",0, R.drawable.imguser1)
         var Usuario2 = Usuario(2,"susi", "321", "writer",0,R.drawable.imguser2)
         var Usuario3 = Usuario(3,"bb","555", "normaluser",0, R.drawable.imguser3)
+        var Usuario4 = Usuario(4,"arturin@gmail.com","222","writer",0,R.drawable.imgwriter1)
+        var Usuario5 = Usuario(5,"paquito12@gmail.com","616", "writer", 0, R.drawable.imgwriter2)
+        var Usuario6 = Usuario(6, "sochiminclamendez@gmail.com", "troconasderrapentes","writer", 0, R.drawable.imgwriter3)
         var array_users:ArrayList<Usuario> = arrayListOf<Usuario>()
         array_users.add(Usuario1)
         array_users.add(Usuario2)
         array_users.add(Usuario3)
+        array_users.add(Usuario4)
+        array_users.add(Usuario5)
+        array_users.add(Usuario6)
 
         for (i in array_users.indices){
             if (recivedUser == i){
@@ -85,7 +93,7 @@ class FragmentUser : Fragment() {
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
             fragmentTransaction.addToBackStack(null)
-            bundle.putInt("literaryWorkRead", counterWorks)
+            bundle.putInt("literaryWorkRead", realArticle)
             fragment.arguments = bundle
 
             fragmentTransaction.commit()
@@ -96,12 +104,20 @@ class FragmentUser : Fragment() {
             println(counterWorks)
             if (counterWorks == 0 ){
                 imgLiteraryWork.setImageResource(R.drawable.article1)
+                lectureTitle.setText(array_works[0].Name)
+                realArticle = 0
             }else if (counterWorks ==1){
                 imgLiteraryWork.setImageResource(R.drawable.article2)
+                lectureTitle.setText(array_works[1].Name)
+                realArticle = 1
             }else if (counterWorks == 2){
                 imgLiteraryWork.setImageResource(R.drawable.article3)
+                lectureTitle.setText(array_works[2].Name)
+                realArticle = 2
             }else if (counterWorks == 3){
                 imgLiteraryWork.setImageResource(R.drawable.article4)
+                lectureTitle.setText(array_works[3].Name)
+                realArticle = 3
                 counterWorks = -1
             }
         }
@@ -111,13 +127,21 @@ class FragmentUser : Fragment() {
             println(counterWorks)
             if (counterWorks <= 0){
                 imgLiteraryWork.setImageResource(R.drawable.article1)
+                lectureTitle.setText(array_works[0].Name)
+                realArticle = 0
                 counterWorks = 4
             }else if (counterWorks ==1){
                 imgLiteraryWork.setImageResource(R.drawable.article2)
+                lectureTitle.setText(array_works[1].Name)
+                realArticle = 1
             }else if (counterWorks == 2){
                 imgLiteraryWork.setImageResource(R.drawable.article3)
+                lectureTitle.setText(array_works[2].Name)
+                realArticle = 2
             }else if (counterWorks == 3){
                 imgLiteraryWork.setImageResource(R.drawable.article4)
+                lectureTitle.setText(array_works[3].Name)
+                realArticle = 3
             }
 
         }
